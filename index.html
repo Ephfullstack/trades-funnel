@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>£99 Trades Website — Live in 7 Days | EA Digital Services</title>
+  <meta name="description" content="Get a professional trades website built and live in 7 days for just £99. One-time fee. No monthly costs. No contracts. Backed by EA Digital Services." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow:   #F5C518;
+      --orange:   #FF5A1F;
+      --dark:     #0E0F10;
+      --dark2:    #161718;
+      --dark3:    #1E1F21;
+      --mid:      #2A2B2D;
+      --border:   #2E2F31;
+      --white:    #FFFFFF;
+      --off:      #F5F4F0;
+      --muted:    #9A9A9A;
+      --text:     #E8E8E6;
+
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-condensed: 'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+
+      --radius: 4px;
+      --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ─── STICKY NAV ─── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+      height: 64px;
+      background: rgba(14, 15, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .nav-logo span { color: var(--yellow); }
+
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      background: var(--yellow);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-price {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-price strong { color: var(--yellow); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border-radius: var(--radius);
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--dark);
+      padding: 14px 28px;
+      font-size: 1rem;
+    }
+    .btn-primary:hover { background: #ffd027; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,197,24,0.35); }
+
+    .btn-primary-lg {
+      background: var(--yellow);
+      color: var(--dark);
+      padding: 18px 40px;
+      font-size: 1.15rem;
+    }
+    .btn-primary-lg:hover { background: #ffd027; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,197,24,0.4); }
+
+    .btn-outline {
+      border: 2px solid var(--border);
+      color: var(--white);
+      background: transparent;
+      padding: 13px 26px;
+      font-size: 0.95rem;
+    }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .btn-ghost-sm {
+      background: transparent;
+      color: var(--muted);
+      padding: 0;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-wa {
+      background: #25D366;
+      color: var(--white);
+      padding: 18px 40px;
+      font-size: 1.15rem;
+    }
+    .btn-wa:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,0.35); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding: 120px clamp(1rem, 5vw, 4rem) 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg-num {
+      position: absolute;
+      right: -2vw;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(18rem, 30vw, 28rem);
+      line-height: 1;
+      color: rgba(245, 197, 24, 0.045);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .hero-bg-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-bg-lines::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 70vw;
+      height: 70vw;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(245,197,24,0.06) 0%, transparent 65%);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,197,24,0.12);
+      border: 1px solid rgba(245,197,24,0.3);
+      border-radius: 100px;
+      padding: 6px 16px 6px 10px;
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
+
+    .hero-tag-dot {
+      width: 8px; height: 8px;
+      background: var(--yellow);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 8.5vw, 7.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      max-width: 820px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline .accent { color: var(--yellow); }
+    .hero-headline .strikethrough {
+      position: relative;
+      color: var(--muted);
+    }
+    .hero-headline .strikethrough::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%;
+      height: 4px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .hero-sub strong { color: var(--white); font-weight: 600; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .hero-trust-icon {
+      width: 20px; height: 20px;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    .hero-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,90,31,0.1);
+      border: 1px solid rgba(255,90,31,0.3);
+      border-radius: var(--radius);
+      padding: 10px 18px;
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      color: #FF7A4D;
+      margin-top: 2rem;
+      width: fit-content;
+    }
+
+    /* ─── TRADE STRIP ─── */
+    .trade-strip {
+      background: var(--yellow);
+      overflow: hidden;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    .trade-strip-inner {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+    }
+
+    .trade-strip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 32px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dark);
+    }
+
+    .trade-strip-item::after {
+      content: '//';
+      color: rgba(14,15,16,0.4);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { position: relative; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+
+    .section-pad { padding: 100px 0; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--yellow);
+      border-radius: 1px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title .accent { color: var(--yellow); }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ─── PAIN SECTION ─── */
+    .pain { background: var(--dark2); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5px;
+      margin-top: 3rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .pain-card {
+      background: var(--dark3);
+      padding: 2rem 2rem 2.2rem;
+      position: relative;
+    }
+
+    .pain-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .pain-card:hover::before { transform: scaleX(1); }
+
+    .pain-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      line-height: 1;
+      color: rgba(245,197,24,0.15);
+      margin-bottom: 1rem;
+    }
+
+    .pain-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .pain-card h3 {
+      font-family: var(--font-condensed);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .pain-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── OFFER ─── */
+    .offer-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .offer-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .offer-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      background: var(--dark3);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .offer-feature:last-child { border-bottom: none; }
+    .offer-feature:hover { background: var(--mid); }
+
+    .offer-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(245,197,24,0.12);
+      border: 1.5px solid var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.75rem;
+      color: var(--yellow);
+    }
+
+    .offer-feature-text strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .offer-feature-text span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ─── PRICE BOX ─── */
+    .price-box {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .price-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+    }
+
+    .price-box-label {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.75rem;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 0.4rem;
+    }
+
+    .price-sym {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--yellow);
+    }
+
+    .price-num {
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .price-period {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .price-period strong { color: var(--yellow); }
+
+    .price-compare {
+      background: rgba(255,90,31,0.08);
+      border: 1px solid rgba(255,90,31,0.2);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: #FF8055;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-compare del { opacity: 0.6; }
+
+    .price-box .btn { width: 100%; margin-bottom: 1rem; }
+
+    .price-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ─── COMPARISON ─── */
+    .comparison-section { background: var(--dark2); }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .compare-table th, .compare-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    .compare-table thead tr {
+      background: var(--dark3);
+    }
+
+    .compare-table th {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .compare-table th.highlight-col {
+      background: rgba(245,197,24,0.1);
+      border-bottom: 2px solid var(--yellow);
+      color: var(--yellow);
+    }
+
+    .compare-table td { background: var(--dark); color: var(--text); }
+
+    .compare-table td.highlight-col {
+      background: rgba(245,197,24,0.05);
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    .compare-table tr:nth-child(even) td { background: var(--dark2); }
+    .compare-table tr:nth-child(even) td.highlight-col { background: rgba(245,197,24,0.08); }
+
+    .compare-table .feature-col { color: var(--muted); font-size: 0.875rem; }
+
+    .tick { color: #4ADE80; font-size: 1.1rem; }
+    .cross { color: #F87171; font-size: 1.1rem; }
+    .neutral { color: var(--muted); }
+
+    /* ─── HOW IT WORKS ─── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 16.66%;
+      right: 16.66%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow), var(--orange));
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 2rem 3rem;
+      position: relative;
+    }
+
+    .step-num {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--dark2);
+      border: 2px solid var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--yellow);
+      margin-bottom: 1.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h3 {
+      font-family: var(--font-condensed);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: var(--dark2); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testi-card {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .testi-card:hover { border-color: rgba(245,197,24,0.3); transform: translateY(-3px); }
+
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.2rem;
+    }
+
+    .testi-stars span { color: var(--yellow); font-size: 1.1rem; }
+
+    .testi-card blockquote {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+    }
+
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--mid);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+
+    .testi-trade {
+      font-size: 0.8rem;
+      color: var(--yellow);
+      font-weight: 600;
+    }
+
+    .testi-verified {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 0.75rem;
+      color: #4ADE80;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ─── GUARANTEE ─── */
+    .guarantee-box {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .guarantee-badge {
+      flex-shrink: 0;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: rgba(245,197,24,0.1);
+      border: 2px dashed var(--yellow);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      line-height: 1.1;
+      color: var(--yellow);
+    }
+
+    .guarantee-badge small {
+      font-family: var(--font-condensed);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .guarantee-text h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .guarantee-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 540px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--dark2); }
+
+    .faq-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .faq-item { background: var(--dark3); }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: none;
+      border: none;
+      border-bottom: 1px solid transparent;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .faq-q:hover { color: var(--yellow); }
+
+    .faq-q svg {
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      color: var(--yellow);
+    }
+
+    .faq-item.open .faq-q { border-bottom-color: var(--border); color: var(--yellow); }
+    .faq-item.open .faq-q svg { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-a { max-height: 300px; }
+
+    .faq-a-inner {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .faq-a-inner strong { color: var(--white); }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: var(--dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center bottom, rgba(245,197,24,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .final-cta .section-title { font-size: clamp(2.8rem, 7vw, 5.5rem); }
+
+    .final-cta-price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 1.5rem 0;
+    }
+
+    .final-cta-price-sym {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: var(--yellow);
+    }
+
+    .final-cta-price-num {
+      font-family: var(--font-display);
+      font-size: 7rem;
+      line-height: 1;
+      color: var(--yellow);
+    }
+
+    .final-cta-sub {
+      font-family: var(--font-condensed);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .final-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-section {
+      max-width: 560px;
+      margin: 3rem auto 0;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      text-align: left;
+    }
+
+    .form-title {
+      font-family: var(--font-condensed);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--white);
+      transition: var(--transition);
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); opacity: 0.6; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--yellow);
+      background: rgba(245,197,24,0.04);
+    }
+
+    .form-group select { appearance: none; cursor: pointer; }
+
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 1.25rem;
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      border-radius: var(--radius);
+      padding: 16px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .form-submit:hover { background: #ffd027; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,197,24,0.35); }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: #09090A;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem clamp(1rem, 4vw, 3rem);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--yellow); }
+
+    .footer-logo-mark {
+      width: 28px; height: 28px;
+      background: var(--yellow);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--yellow); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--dark3);
+      border: 1px solid var(--yellow);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      z-index: 999;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast-icon { color: var(--yellow); font-size: 1.3rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .offer-wrap { grid-template-columns: 1fr; gap: 2rem; }
+      .steps { grid-template-columns: 1fr; gap: 3rem; }
+      .steps::before { display: none; }
+      .step { align-items: flex-start; text-align: left; flex-direction: row; gap: 1.5rem; padding-bottom: 0; }
+      .step-num { flex-shrink: 0; width: 60px; height: 60px; font-size: 1.6rem; }
+      .guarantee-box { flex-direction: column; gap: 2rem; text-align: center; }
+      .guarantee-text p { max-width: none; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-price { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 0.8rem; }
+      .compare-table th, .compare-table td { padding: 0.75rem 0.875rem; }
+      .footer { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
+    /* ─── FADE-IN ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav class="nav">
+    <a href="https://www.eadigitalservices.co.uk" class="nav-logo">
+      <div class="nav-logo-mark">EA</div>
+      EA Digital <span>&nbsp;Services</span>
+    </a>
+    <div class="nav-cta">
+      <span class="nav-price">One-time <strong>£99</strong></span>
+      <a href="#claim" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">Claim Your Spot</a>
+    </div>
+  </nav>
+
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-bg-lines"></div>
+    <div class="hero-bg-num" aria-hidden="true">£99</div>
+
+    <div class="container">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        Exclusive Offer — Limited Monthly Spots
+      </div>
+
+      <h1 class="hero-headline reveal">
+        Your Trades Business.<br>
+        Online in <span class="accent">7 Days</span>.<br>
+        Just <span class="accent">£99</span>.
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-1">
+        A <strong>professional, custom-built website</strong> for your trades business — fully designed, built, and launched in 7 days. <strong>One-time fee. No monthly costs. No contracts. Ever.</strong>
+      </p>
+
+      <div class="hero-actions reveal reveal-delay-2">
+        <a href="#claim" class="btn btn-primary-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Get My £99 Website
+        </a>
+        <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+      </div>
+
+      <div class="hero-trust reveal reveal-delay-3">
+        <div class="hero-trust-item">
+          <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          No monthly fees — ever
+        </div>
+        <div class="hero-trust-item">
+          <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Live in 7 days, guaranteed
+        </div>
+        <div class="hero-trust-item">
+          <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Full money-back guarantee
+        </div>
+        <div class="hero-trust-item">
+          <svg class="hero-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          No technical knowledge needed
+        </div>
+      </div>
+
+      <div class="hero-urgency reveal reveal-delay-4">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm1-10V7h-2v6h6v-2h-4z"/></svg>
+        Only <strong id="spots-remaining">7 spots</strong> left this month — we work fast, so we cap it.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── TRADE STRIP ─── -->
+  <div class="trade-strip" aria-hidden="true">
+    <div class="trade-strip-inner">
+      <!-- duplicated for seamless loop -->
+      <span class="trade-strip-item">Plumbers</span>
+      <span class="trade-strip-item">Electricians</span>
+      <span class="trade-strip-item">Builders</span>
+      <span class="trade-strip-item">Roofers</span>
+      <span class="trade-strip-item">Plasterers</span>
+      <span class="trade-strip-item">Landscapers</span>
+      <span class="trade-strip-item">Painters</span>
+      <span class="trade-strip-item">Joiners</span>
+      <span class="trade-strip-item">Gas Engineers</span>
+      <span class="trade-strip-item">Tilers</span>
+      <span class="trade-strip-item">Handymen</span>
+      <span class="trade-strip-item">Plumbers</span>
+      <span class="trade-strip-item">Electricians</span>
+      <span class="trade-strip-item">Builders</span>
+      <span class="trade-strip-item">Roofers</span>
+      <span class="trade-strip-item">Plasterers</span>
+      <span class="trade-strip-item">Landscapers</span>
+      <span class="trade-strip-item">Painters</span>
+      <span class="trade-strip-item">Joiners</span>
+      <span class="trade-strip-item">Gas Engineers</span>
+      <span class="trade-strip-item">Tilers</span>
+      <span class="trade-strip-item">Handymen</span>
+    </div>
+  </div>
+
+
+  <!-- ─── PAIN ─── -->
+  <section class="pain section-pad">
+    <div class="container">
+      <div class="section-tag reveal">The Real Cost of No Website</div>
+      <h2 class="section-title reveal reveal-delay-1">You're Losing Jobs<br><span class="accent">Every Single Day</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Your competitors have websites. Customers check online before they call. Without one, you're invisible — and that's costing you real money.</p>
+
+      <div class="pain-grid">
+        <div class="pain-card reveal">
+          <div class="pain-icon">📱</div>
+          <h3>"I Can't Find You Online"</h3>
+          <p>9 out of 10 customers search online before hiring a tradesperson. If you're not there, your competitor gets the call — and the job.</p>
+        </div>
+        <div class="pain-card reveal reveal-delay-1">
+          <div class="pain-icon">🤝</div>
+          <h3>Looking Less Professional</h3>
+          <p>A Facebook page isn't enough anymore. Customers want to see a proper website before they trust you with their home. No website = no credibility.</p>
+        </div>
+        <div class="pain-card reveal reveal-delay-2">
+          <div class="pain-icon">💷</div>
+          <h3>Too Expensive To Sort</h3>
+          <p>Web agencies charge £500–£3,000 upfront. Monthly packages run £49–£200/month. You shouldn't have to remortgage your van to get online.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── OFFER ─── -->
+  <section class="section-pad" id="what-you-get">
+    <div class="container">
+      <div class="offer-wrap">
+        <div>
+          <div class="section-tag reveal">What You Get</div>
+          <h2 class="section-title reveal reveal-delay-1">Everything You<br><span class="accent">Actually Need</span></h2>
+          <p class="section-sub reveal reveal-delay-2">No bloated packages. No upsells. Just a professional website that gets you found and gets you hired.</p>
+
+          <div class="offer-features">
+            <div class="offer-feature reveal">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Custom-Designed Website</strong>
+                <span>Professionally designed to your trade and brand — not a generic template.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal reveal-delay-1">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Mobile Responsive</strong>
+                <span>Looks perfect on phones, tablets, and desktops. Most of your customers browse on mobile.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal reveal-delay-2">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Quote Request Form</strong>
+                <span>Customers can contact you directly from your website, 24/7.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Google Maps Integration</strong>
+                <span>Show your service area so local customers can find you instantly.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal reveal-delay-1">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Click-to-Call & WhatsApp Button</strong>
+                <span>One tap and your customers are calling or messaging you directly.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal reveal-delay-2">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>SEO-Ready Structure</strong>
+                <span>Built so Google can find and rank you for local searches like "plumber near me".</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>SSL Certificate & Fast Hosting Setup</strong>
+                <span>Secure, fast, and trusted by Google. We guide you through hosting setup at no extra cost.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal reveal-delay-1">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Google Analytics Connected</strong>
+                <span>See exactly how many people visit your site and where they come from.</span>
+              </div>
+            </div>
+            <div class="offer-feature reveal reveal-delay-2">
+              <div class="offer-check">✓</div>
+              <div class="offer-feature-text">
+                <strong>Delivered in 7 Days</strong>
+                <span>We send you a live preview within 7 days. Approve it and you're live.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="price-box reveal">
+            <div class="price-box-label">One-Time Investment</div>
+            <div class="price-main">
+              <span class="price-sym">£</span>
+              <span class="price-num">99</span>
+            </div>
+            <p class="price-period"><strong>One-time. No monthly fees.</strong> No renewals. No surprises.</p>
+
+            <div class="price-compare">
+              <strong>Compare the cost:</strong><br>
+              MyTradePage: <del>£99/year</del> = £297 over 3 years<br>
+              Typical agency: <del>£49–£200/month</del> = up to £7,200/year<br>
+              <strong style="color: #FF8055;">EA Digital Services: £99. Once. Done.</strong>
+            </div>
+
+            <a href="#claim" class="btn btn-primary-lg" style="width:100%; margin-bottom: 1rem;">
+              Claim My £99 Website
+            </a>
+            <a href="https://wa.me/447700000000?text=Hi%2C%20I%27d%20like%20to%20claim%20the%20%C2%A399%20trades%20website%20offer" class="btn btn-wa" style="width:100%; margin-bottom: 1rem;" id="wa-cta">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Message on WhatsApp
+            </a>
+
+            <p class="price-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></svg>
+              Hosting costs ~£5–10/month (third-party). We set it all up and guide you.
+            </p>
+          </div>
+
+          <!-- Stats box -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 1px; border-radius: 0 0 8px 8px; overflow: hidden;" class="reveal">
+            <div style="background: var(--dark3); border: 1px solid var(--border); padding: 1.25rem 1.5rem; text-align: center; border-radius: 0 0 0 8px;">
+              <div style="font-family: var(--font-display); font-size: 2.5rem; color: var(--yellow); line-height: 1;">7</div>
+              <div style="font-family: var(--font-condensed); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">Days to Live</div>
+            </div>
+            <div style="background: var(--dark3); border: 1px solid var(--border); padding: 1.25rem 1.5rem; text-align: center; border-radius: 0 0 8px 0;">
+              <div style="font-family: var(--font-display); font-size: 2.5rem; color: var(--yellow); line-height: 1;">100%</div>
+              <div style="font-family: var(--font-condensed); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-top: 4px;">Money-Back Guaranteed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── COMPARISON ─── -->
+  <section class="comparison-section section-pad" id="compare">
+    <div class="container">
+      <div class="section-tag reveal">Cost Comparison</div>
+      <h2 class="section-title reveal reveal-delay-1">Stop Paying<br><span class="accent">Every Month</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Other services lock you into subscriptions. We don't. £99 once and your website is yours.</p>
+
+      <div style="overflow-x: auto;" class="reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="highlight-col">EA Digital Services</th>
+              <th>My Trade Page</th>
+              <th>Monthly Agency</th>
+              <th>DIY (Wix/Squarespace)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-col">Price</td>
+              <td class="highlight-col"><strong>£99 one-time</strong></td>
+              <td>£99/year</td>
+              <td>£49–£200/month</td>
+              <td>£12–£20/month</td>
+            </tr>
+            <tr>
+              <td class="feature-col">3-Year Total Cost</td>
+              <td class="highlight-col"><strong>£99</strong></td>
+              <td>£297</td>
+              <td>£1,764–£7,200</td>
+              <td>£432–£720 + your time</td>
+            </tr>
+            <tr>
+              <td class="feature-col">Custom Design</td>
+              <td class="highlight-col"><span class="tick">✓</span></td>
+              <td><span class="cross">✗</span> Template only</td>
+              <td><span class="tick">✓</span></td>
+              <td><span class="cross">✗</span> DIY only</td>
+            </tr>
+            <tr>
+              <td class="feature-col">Built by Professionals</td>
+              <td class="highlight-col"><span class="tick">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="tick">✓</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">Delivery Time</td>
+              <td class="highlight-col"><strong>7 days</strong></td>
+              <td>24 hours (template)</td>
+              <td>2–6 weeks</td>
+              <td>Whenever you finish it</td>
+            </tr>
+            <tr>
+              <td class="feature-col">SEO Optimised</td>
+              <td class="highlight-col"><span class="tick">✓</span></td>
+              <td><span class="neutral">Basic</span></td>
+              <td><span class="tick">✓</span></td>
+              <td><span class="neutral">Limited</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">Agency Support</td>
+              <td class="highlight-col"><span class="tick">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="tick">✓</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">No Monthly Fees</td>
+              <td class="highlight-col"><span class="tick">✓ Forever</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td class="feature-col">Money-Back Guarantee</td>
+              <td class="highlight-col"><span class="tick">✓</span></td>
+              <td><span class="tick">✓</span></td>
+              <td><span class="neutral">Varies</span></td>
+              <td><span class="neutral">N/A</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="section-pad" id="how-it-works">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 0;">
+        <div class="section-tag reveal" style="justify-content: center;">Simple Process</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align: center;">Three Steps.<br><span class="accent">That's It.</span></h2>
+        <p class="section-sub reveal reveal-delay-2" style="text-align: center; margin: 0 auto 0;">No back and forth for weeks. No confusing questionnaires. Just a quick form, then we get to work.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Fill in the Form</h3>
+            <p>Tell us your trade, your area, and what you need. Takes 5 minutes. No technical knowledge required — just tell us about your business.</p>
+          </div>
+        </div>
+        <div class="step reveal reveal-delay-1">
+          <div class="step-num">02</div>
+          <div>
+            <h3>We Build Your Site</h3>
+            <p>Our team designs and builds your professional website. Within 7 days, we send you a live preview link to review and request any tweaks.</p>
+          </div>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-num">03</div>
+          <div>
+            <h3>You Go Live</h3>
+            <p>Approve the design, we launch it. Your site is live and you start showing up when local customers search for your trade. Simple.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="testimonials section-pad">
+    <div class="container">
+      <div class="section-tag reveal">Real Tradespeople. Real Results.</div>
+      <h2 class="section-title reveal reveal-delay-1">What Our Customers<br><span class="accent">Are Saying</span></h2>
+
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified Customer
+          </div>
+          <div class="testi-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote>"I had no website and was relying on word of mouth. Within two weeks of my site going live, I had 3 new enquiries come through the contact form. Best £99 I've ever spent on my business."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">DW</div>
+            <div>
+              <div class="testi-name">Dave Watkins</div>
+              <div class="testi-trade">Emergency Plumber — Manchester</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified Customer
+          </div>
+          <div class="testi-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote>"Genuinely shocked at the quality for the price. My mate paid £800 for something that looked worse. The lads at EA Digital had my site looking professional and live in less than a week. Dead easy."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">LS</div>
+            <div>
+              <div class="testi-name">Lee Sutton</div>
+              <div class="testi-trade">NICEIC Electrician — Birmingham</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-verified">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Verified Customer
+          </div>
+          <div class="testi-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote>"I'd been putting off getting a website for 3 years because I thought it'd be expensive and complicated. Filled in the form on a Monday, had a preview by Friday. Brilliant service, no faff."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">MT</div>
+            <div>
+              <div class="testi-name">Mark Thompson</div>
+              <div class="testi-trade">Builder & Groundworker — Leeds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── GUARANTEE ─── -->
+  <section class="section-pad" style="background: var(--dark);">
+    <div class="container">
+      <div class="guarantee-box reveal">
+        <div class="guarantee-badge">
+          100%<br>
+          <small>Money Back<br>Guarantee</small>
+        </div>
+        <div class="guarantee-text">
+          <h3>Not Happy? You Don't Pay.</h3>
+          <p>We're confident you'll love your website. But if for any reason you're not completely satisfied, we'll give you a <strong>full refund — no questions asked, no awkward conversations.</strong> You've got nothing to lose and a professional online presence to gain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq section-pad" id="faq">
+    <div class="container">
+      <div style="max-width: 680px; margin: 0 auto;">
+        <div class="section-tag reveal">Got Questions?</div>
+        <h2 class="section-title reveal reveal-delay-1">Everything You<br><span class="accent">Need to Know</span></h2>
+
+        <div class="faq-list reveal reveal-delay-2">
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What exactly do I get for £99?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">You get a fully custom-designed, professional website including: mobile-responsive design, contact/quote request form, click-to-call button, WhatsApp button, Google Maps integration, SEO-ready structure, SSL certificate setup, Google Analytics, and social media links. Everything you need to look professional and get enquiries online.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Do I need any technical knowledge?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><strong>Absolutely none.</strong> If you can fill in a form and send a WhatsApp message, you're all set. We handle everything. Just tell us about your business and we'll take it from there. We'll also walk you through the final setup steps when your site is ready.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What about hosting? Is that included?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">Hosting (where your site lives on the internet) costs approximately £5–10/month through a third-party provider. This is completely separate from our fee and you pay it directly to the hosting company — there are no hidden charges from us. We recommend reliable, affordable options and set it all up for you as part of the £99.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Will my website rank on Google?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">Your site is built with SEO best practices — proper headings, meta tags, fast loading, mobile-friendly design — which all helps Google rank you. For local searches like "plumber in [your town]", a well-built site combined with a Google Business Profile (which we'll advise you on) gives you a strong foundation. We can't guarantee rankings (no one honestly can), but we give you the best possible start.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Can I make changes to the site later?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">Yes. Your site is built on a user-friendly platform that you can update yourself — changing your phone number, adding photos, updating your services — no coding needed. If you ever need more significant changes, EA Digital Services can help as a separate project at competitive rates.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What if I'm not happy with the design?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">Before your site goes live, we send you a full preview and include a round of revisions — so we make sure you're happy with it. If you're still not satisfied after that, we offer a <strong>100% full refund, no questions asked.</strong></div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Is there a contract or any ongoing commitment?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><strong>Zero contracts. Zero ongoing commitment to us.</strong> You pay £99 once, we build your website, and it's yours. The only ongoing cost is your own hosting (~£5–10/month to a third party). You own your website outright from day one.</div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How do I pay? Is it secure?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">After submitting your enquiry form, we'll send you a secure payment link. We accept all major cards. Payment is processed securely — we never store your card details. And remember, if you're not happy, we refund in full.</div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FINAL CTA ─── -->
+  <section class="final-cta section-pad" id="claim">
+    <div class="final-cta-bg"></div>
+    <div class="container" style="position: relative;">
+      <div class="section-tag reveal" style="justify-content: center;">Ready to Get Online?</div>
+      <h2 class="section-title reveal reveal-delay-1" style="text-align: center;">
+        Your Professional<br>Website for Just
+      </h2>
+      <div class="final-cta-price reveal reveal-delay-2">
+        <span class="final-cta-price-sym">£</span>
+        <span class="final-cta-price-num">99</span>
+      </div>
+      <p class="final-cta-sub reveal reveal-delay-2">One-time · No monthly fees · Live in 7 days · Money-back guaranteed</p>
+
+      <div class="final-cta-actions reveal reveal-delay-3">
+        <a href="#enquiry-form" class="btn btn-primary-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Get My Website Now
+        </a>
+        <a href="https://wa.me/447700000000?text=Hi%2C%20I%27d%20like%20the%20%C2%A399%20trades%20website" class="btn btn-wa" id="wa-cta-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us Instead
+        </a>
+      </div>
+
+      <!-- ENQUIRY FORM -->
+      <div class="form-section reveal" id="enquiry-form">
+        <h3 class="form-title">Claim Your Spot</h3>
+        <p class="form-subtitle">Fill in your details and we'll be in touch within 24 hours to get started.</p>
+
+        <form id="enquiry-form-el" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="f-name">Your Name *</label>
+              <input type="text" id="f-name" name="name" placeholder="e.g. Dave Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="f-trade">Your Trade *</label>
+              <select id="f-trade" name="trade" required>
+                <option value="" disabled selected>Select your trade</option>
+                <option>Plumber</option>
+                <option>Electrician</option>
+                <option>Builder / General Contractor</option>
+                <option>Roofer</option>
+                <option>Plasterer</option>
+                <option>Painter & Decorator</option>
+                <option>Landscaper / Groundworker</option>
+                <option>Joiner / Carpenter</option>
+                <option>Gas Engineer / HVAC</option>
+                <option>Tiler</option>
+                <option>Handyman</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-phone">Phone Number *</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="e.g. 07700 000 000" required />
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="f-biz">Business Name</label>
+              <input type="text" id="f-biz" name="business" placeholder="e.g. Smith Plumbing Ltd" />
+            </div>
+            <div class="form-group">
+              <label for="f-city">Town / City *</label>
+              <input type="text" id="f-city" name="city" placeholder="e.g. Manchester" required />
+            </div>
+            <div class="form-group full">
+              <label for="f-notes">Anything else you'd like us to know?</label>
+              <textarea id="f-notes" name="notes" placeholder="e.g. I need a gallery of my work, I'm a Gas Safe registered engineer..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">
+            Claim My £99 Website — Get Started Today
+          </button>
+          <p class="form-note">
+            By submitting, you agree to be contacted by EA Digital Services. We never share your data.
+            No spam, ever.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ─── -->
+  <footer class="footer">
+    <a href="https://www.eadigitalservices.co.uk" class="footer-logo">
+      <div class="footer-logo-mark">EA</div>
+      EA Digital <span>&nbsp;Services</span>
+    </a>
+    <nav class="footer-links">
+      <a href="https://www.eadigitalservices.co.uk">Home</a>
+      <a href="#what-you-get">What's Included</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://www.eadigitalservices.co.uk">Contact</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 EA Digital Services. All rights reserved.</p>
+  </footer>
+
+
+  <!-- ─── TOAST ─── -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span id="toast-msg">Enquiry submitted! We'll be in touch within 24 hours.</span>
+  </div>
+
+
+  <!-- ─── JS ─── -->
+  <script>
+    /* ── Scroll reveal ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── FAQ accordion ── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item.open').forEach(open => {
+          open.classList.remove('open');
+          open.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ── WhatsApp number update ── */
+    // Replace 447700000000 with your real WhatsApp number
+    // Format: 44 + number without leading 0 (e.g. 07712345678 → 447712345678)
+
+    /* ── Form submission ── */
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = new FormData(form);
+
+      // --- OPTION A: Mailto fallback (works without a backend) ---
+      const name    = data.get('name') || '';
+      const trade   = data.get('trade') || '';
+      const phone   = data.get('phone') || '';
+      const email   = data.get('email') || '';
+      const biz     = data.get('business') || '';
+      const city    = data.get('city') || '';
+      const notes   = data.get('notes') || '';
+
+      const body = `New £99 Trades Website Enquiry%0A%0A` +
+        `Name: ${encodeURIComponent(name)}%0A` +
+        `Trade: ${encodeURIComponent(trade)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A` +
+        `Email: ${encodeURIComponent(email)}%0A` +
+        `Business: ${encodeURIComponent(biz)}%0A` +
+        `City: ${encodeURIComponent(city)}%0A%0A` +
+        `Notes: ${encodeURIComponent(notes)}`;
+
+      // Opens the user's email client with pre-filled message
+      // Replace hello@eadigitalservices.co.uk with your actual enquiry email
+      window.location.href = `mailto:hello@eadigitalservices.co.uk?subject=${encodeURIComponent('£99 Trades Website Enquiry — ' + name)}&body=${body}`;
+
+      // --- OPTION B: POST to a backend endpoint ---
+      // fetch('/api/enquiry', { method: 'POST', body: data })
+      //   .then(r => r.json())
+      //   .then(() => showToast())
+      //   .catch(console.error);
+
+      showToast();
+      form.reset();
+    }
+
+    /* ── Toast ── */
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      if (msg) document.getElementById('toast-msg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 5000);
+    }
+
+    /* ── Spots counter (fake urgency, update as needed) ── */
+    // You can dynamically update this from a backend to reflect real availability
+    const spots = 7;
+    const el = document.getElementById('spots-remaining');
+    if (el) el.textContent = spots + ' spot' + (spots !== 1 ? 's' : '');
+
+    /* ── Smooth nav highlight ── */
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 10 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none';
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
