@@ -79,13 +79,17 @@
     .nav-logo span { color: var(--yellow); }
 
     .nav-logo-mark {
-      width: 32px; height: 32px;
-      background: var(--yellow);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--dark);
+      width: 38px; height: 38px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #fff;
+    }
+
+    .nav-logo-mark img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .nav-cta {
@@ -1101,13 +1105,17 @@
     .footer-logo span { color: var(--yellow); }
 
     .footer-logo-mark {
-      width: 28px; height: 28px;
-      background: var(--yellow);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: var(--dark);
+      width: 32px; height: 32px;
+      border-radius: 3px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #fff;
+    }
+
+    .footer-logo-mark img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .footer-links {
@@ -1153,7 +1161,624 @@
     .toast.show { transform: translateX(-50%) translateY(0); }
     .toast-icon { color: var(--yellow); font-size: 1.3rem; }
 
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--dark3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem clamp(1rem,4vw,3rem);
+    }
+
+    .stats-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1;
+      color: var(--yellow);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: var(--font-condensed);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── TRUST SIGNALS ─── */
+    .trust-section { background: var(--dark); }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .trust-card {
+      background: var(--dark3);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: var(--transition);
+    }
+
+    .trust-card:hover { background: var(--mid); }
+
+    .trust-card-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .trust-card h3 {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    .trust-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .trust-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      flex-shrink: 0;
+    }
+
+    /* ─── WEBSITE EXAMPLES ─── */
+    .examples-section { background: var(--dark2); }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .example-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .example-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+      border-color: rgba(245,197,24,0.3);
+    }
+
+    /* Fake browser chrome */
+    .browser-bar {
+      background: #252628;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .browser-dots {
+      display: flex; gap: 5px;
+    }
+
+    .browser-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+
+    .browser-dot:nth-child(1) { background: #FF5F57; }
+    .browser-dot:nth-child(2) { background: #FEBC2E; }
+    .browser-dot:nth-child(3) { background: #28C840; }
+
+    .browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: monospace;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Mock site content */
+    .mock-site {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mock-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mock-logo-text {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .mock-nav-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    .mock-nav-link {
+      font-size: 0.65rem;
+      opacity: 0.5;
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .mock-hero {
+      padding: 28px 20px 24px;
+      position: relative;
+    }
+
+    .mock-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .mock-h1 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .mock-sub {
+      font-size: 0.68rem;
+      opacity: 0.55;
+      line-height: 1.5;
+      margin-bottom: 14px;
+      max-width: 200px;
+    }
+
+    .mock-cta {
+      display: inline-block;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 3px;
+    }
+
+    .mock-trust-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
+
+    .mock-trust-pill {
+      font-size: 0.58rem;
+      font-family: var(--font-condensed);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      opacity: 0.7;
+    }
+
+    .example-meta {
+      padding: 1rem 1.25rem;
+      background: var(--dark3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .example-trade {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .example-tag {
+      font-size: 0.72rem;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      background: rgba(245,197,24,0.1);
+      border: 1px solid rgba(245,197,24,0.2);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .examples-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .examples-note strong { color: var(--yellow); }
+
+    /* ─── LEAD CAPTURE MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(8,9,10,0.85);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(20px) scale(0.98);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--mid);
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+      z-index: 1;
+    }
+
+    .modal-close:hover { background: var(--border); color: var(--white); }
+
+    .modal-header {
+      padding: 2rem 2rem 0;
+    }
+
+    .modal-step-indicator {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-step-dot {
+      height: 3px;
+      flex: 1;
+      border-radius: 2px;
+      background: var(--border);
+      transition: background 0.4s ease;
+    }
+
+    .modal-step-dot.active { background: var(--yellow); }
+    .modal-step-dot.done   { background: rgba(245,197,24,0.4); }
+
+    .modal-step {
+      display: none;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .modal-step.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(10px); }
+      to   { opacity:1; transform:none; }
+    }
+
+    .modal-pretitle {
+      font-family: var(--font-condensed);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-sub {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .modal-body { padding: 0 2rem 2rem; }
+
+    /* Trade picker grid */
+    .trade-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .trade-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      cursor: pointer;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      transition: var(--transition);
+      width: 100%;
+      text-align: left;
+    }
+
+    .trade-btn:hover, .trade-btn.selected {
+      background: rgba(245,197,24,0.1);
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    .trade-btn-icon { font-size: 1.1rem; }
+
+    .trade-other {
+      grid-column: 1 / -1;
+    }
+
+    /* Modal form fields */
+    .modal-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .modal-field label {
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .modal-field input {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px 14px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--white);
+      outline: none;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .modal-field input::placeholder { color: var(--muted); opacity: 0.5; }
+    .modal-field input:focus { border-color: var(--yellow); background: rgba(245,197,24,0.04); }
+    .modal-field input.error { border-color: #F87171; }
+
+    .modal-next {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--dark);
+      border: none;
+      border-radius: var(--radius);
+      padding: 15px;
+      font-family: var(--font-condensed);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 0.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+
+    .modal-next:hover { background: #ffd027; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,197,24,0.35); }
+    .modal-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .modal-back {
+      background: none; border: none;
+      font-family: var(--font-condensed);
+      font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; gap: 5px;
+      padding: 0; margin-bottom: 1rem;
+      transition: var(--transition);
+    }
+
+    .modal-back:hover { color: var(--white); }
+
+    /* Step 3 — confirmation */
+    .modal-confirm-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(74,222,128,0.12);
+      border: 2px solid rgba(74,222,128,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-summary {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-summary-row:last-child { border-bottom: none; }
+    .modal-summary-row span:first-child { color: var(--muted); }
+    .modal-summary-row span:last-child { color: var(--white); font-weight: 600; }
+
+    .modal-stripe-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--yellow);
+      color: var(--dark);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-stripe-btn:hover { background: #ffd027; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,197,24,0.35); }
+
+    .modal-stripe-btn-left { text-align: left; }
+
+    .modal-stripe-btn-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      line-height: 1;
+      color: var(--dark);
+    }
+
+    .modal-stripe-btn-sub {
+      font-family: var(--font-condensed);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(14,15,16,0.6);
+      margin-top: 2px;
+    }
+
+    .modal-privacy {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+      .stat-item { padding: 0 1rem; }
+    }
+
     @media (max-width: 900px) {
       .offer-wrap { grid-template-columns: 1fr; gap: 2rem; }
       .steps { grid-template-columns: 1fr; gap: 3rem; }
@@ -1197,7 +1822,7 @@
   <!-- ─── NAV ─── -->
   <nav class="nav">
     <a href="https://www.eadigitalservices.co.uk" class="nav-logo">
-      <div class="nav-logo-mark">EA</div>
+      <div class="nav-logo-mark"><img src="ea-logo.png" alt="EA Digital Services logo" /></div>
       EA Digital <span>&nbsp;Services</span>
     </a>
     <div class="nav-cta">
@@ -1229,10 +1854,10 @@
       </p>
 
       <div class="hero-actions reveal reveal-delay-2">
-        <a href="https://buy.stripe.com/9B6aEW4KXcIGetJ4akcAo04" class="btn btn-primary-lg">
+        <button onclick="openModal()" class="btn btn-primary-lg">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Pay £99 & Book Your Call
-        </a>
+          Get My £99 Website
+        </button>
         <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
       </div>
 
@@ -1289,6 +1914,29 @@
       <span class="trade-strip-item">Gas Engineers</span>
       <span class="trade-strip-item">Tilers</span>
       <span class="trade-strip-item">Handymen</span>
+    </div>
+  </div>
+
+
+  <!-- ─── STATS BAR ─── -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="147">0</div>
+        <div class="stat-label">Sites Built</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Days to Live</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num">£99</div>
+        <div class="stat-label">One-Time Only</div>
+      </div>
     </div>
   </div>
 
@@ -1413,9 +2061,9 @@
               <strong style="color: #FF8055;">EA Digital Services: £99. Once. Done.</strong>
             </div>
 
-            <a href="https://buy.stripe.com/9B6aEW4KXcIGetJ4akcAo04" class="btn btn-primary-lg" style="width:100%; margin-bottom: 1rem;">
-              Pay £99 & Book Your Call
-            </a>
+            <button onclick="openModal()" class="btn btn-primary-lg" style="width:100%; margin-bottom: 1rem;">
+              Get My £99 Website
+            </button>
             <a href="https://wa.me/447904937213?text=Hi%2C%20I%27d%20like%20to%20claim%20the%20%C2%A399%20trades%20website%20offer" class="btn btn-wa" style="width:100%; margin-bottom: 1rem;" id="wa-cta">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Message on WhatsApp
@@ -1564,6 +2212,194 @@
             <p>Approve the design, we launch it. Your site is live and you start showing up when local customers search for your trade. Simple.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── WEBSITE EXAMPLES ─── -->
+  <section class="examples-section section-pad" id="examples">
+    <div class="container">
+      <div class="section-tag reveal">Real Results</div>
+      <h2 class="section-title reveal reveal-delay-1">This Is What Your<br><span class="accent">Site Could Look Like</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Professional, mobile-ready websites built for real tradespeople. Yours will be designed specifically for your trade and your area.</p>
+
+      <div class="examples-grid">
+
+        <!-- Example 1: Plumber -->
+        <div class="example-card reveal">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+            </div>
+            <div class="browser-url">www.davisplumbing.co.uk</div>
+          </div>
+          <div class="mock-site" style="background:#0B1E33; color:#fff;">
+            <div class="mock-nav" style="background:#0d2440;">
+              <div class="mock-logo-text" style="color:#fff;">Davis <span style="color:#3B9EE8;">Plumbing</span></div>
+              <div class="mock-nav-links">
+                <span class="mock-nav-link" style="color:#fff;">Services</span>
+                <span class="mock-nav-link" style="color:#fff;">Gallery</span>
+                <span class="mock-nav-link" style="color:#fff;">Contact</span>
+              </div>
+            </div>
+            <div class="mock-hero" style="background: linear-gradient(135deg, #0B1E33 0%, #0d2e50 100%);">
+              <div class="mock-tag" style="background:rgba(59,158,232,0.15); color:#3B9EE8; border: 1px solid rgba(59,158,232,0.3);">📍 Manchester & Surrounding</div>
+              <div class="mock-h1">Emergency<br>Plumber<br><span style="color:#3B9EE8;">24/7</span></div>
+              <div class="mock-sub">Boilers, leaks, bathrooms. Gas Safe registered. No call-out fee before 8pm.</div>
+              <div class="mock-cta" style="background:#3B9EE8; color:#fff;">Get a Free Quote →</div>
+            </div>
+            <div class="mock-trust-row" style="background:#0d2440;">
+              <span class="mock-trust-pill" style="color:#3B9EE8; border-color:rgba(59,158,232,0.3);">⭐ 5.0 Google</span>
+              <span class="mock-trust-pill" style="color:#ccc;">Gas Safe ✓</span>
+              <span class="mock-trust-pill" style="color:#ccc;">Checkatrade ✓</span>
+            </div>
+          </div>
+          <div class="example-meta">
+            <span class="example-trade">Davis Plumbing Ltd</span>
+            <span class="example-tag">Plumber</span>
+          </div>
+        </div>
+
+        <!-- Example 2: Electrician -->
+        <div class="example-card reveal reveal-delay-1">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+            </div>
+            <div class="browser-url">www.stelectrical.co.uk</div>
+          </div>
+          <div class="mock-site" style="background:#0E0E0E; color:#fff;">
+            <div class="mock-nav" style="background:#141414;">
+              <div class="mock-logo-text">S&T <span style="color:#F5C518;">Electrical</span></div>
+              <div class="mock-nav-links">
+                <span class="mock-nav-link" style="color:#888;">Services</span>
+                <span class="mock-nav-link" style="color:#888;">About</span>
+                <span class="mock-nav-link" style="color:#888;">Contact</span>
+              </div>
+            </div>
+            <div class="mock-hero" style="background:#0E0E0E; border-bottom: 3px solid #F5C518;">
+              <div class="mock-tag" style="background:rgba(245,197,24,0.1); color:#F5C518; border:1px solid rgba(245,197,24,0.3);">⚡ NICEIC Approved</div>
+              <div class="mock-h1">Trusted<br><span style="color:#F5C518;">Electrician</span><br>Birmingham</div>
+              <div class="mock-sub" style="color:#888;">Domestic & commercial. Fuse boards, rewires, EV charging. Fully certified.</div>
+              <div class="mock-cta" style="background:#F5C518; color:#0E0E0E;">Book a Survey →</div>
+            </div>
+            <div class="mock-trust-row" style="background:#141414;">
+              <span class="mock-trust-pill" style="color:#F5C518; border-color:rgba(245,197,24,0.3);">NICEIC ✓</span>
+              <span class="mock-trust-pill" style="color:#888;">EV Charging</span>
+              <span class="mock-trust-pill" style="color:#888;">⭐ 4.9 Google</span>
+            </div>
+          </div>
+          <div class="example-meta">
+            <span class="example-trade">S&T Electrical Services</span>
+            <span class="example-tag">Electrician</span>
+          </div>
+        </div>
+
+        <!-- Example 3: Builder -->
+        <div class="example-card reveal reveal-delay-2">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+            </div>
+            <div class="browser-url">www.premierbuildsleeds.co.uk</div>
+          </div>
+          <div class="mock-site" style="background:#F5F4F0; color:#111;">
+            <div class="mock-nav" style="background:#fff; border-bottom:1px solid #e5e5e5;">
+              <div class="mock-logo-text" style="color:#111;">Premier <span style="color:#2D6A4F;">Builds</span></div>
+              <div class="mock-nav-links">
+                <span class="mock-nav-link" style="color:#555;">Projects</span>
+                <span class="mock-nav-link" style="color:#555;">Services</span>
+                <span class="mock-nav-link" style="color:#555;">Quote</span>
+              </div>
+            </div>
+            <div class="mock-hero" style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); color:#fff;">
+              <div class="mock-tag" style="background:rgba(255,255,255,0.15); color:#fff; border:1px solid rgba(255,255,255,0.25);">🏗️ Leeds & West Yorkshire</div>
+              <div class="mock-h1">Extensions,<br>Loft Conversions<br><span style="color:#95D5B2;">&amp; More</span></div>
+              <div class="mock-sub" style="color:rgba(255,255,255,0.7);">20+ years experience. Free quote within 24hrs. FMB registered builder.</div>
+              <div class="mock-cta" style="background:#fff; color:#1B4332;">Get Free Quote →</div>
+            </div>
+            <div class="mock-trust-row" style="background:#fff; border-top:1px solid #e5e5e5;">
+              <span class="mock-trust-pill" style="color:#2D6A4F; border-color:rgba(45,106,79,0.3);">FMB ✓</span>
+              <span class="mock-trust-pill" style="color:#555;">20+ Years</span>
+              <span class="mock-trust-pill" style="color:#555;">⭐ 5.0 Google</span>
+            </div>
+          </div>
+          <div class="example-meta">
+            <span class="example-trade">Premier Builds Leeds</span>
+            <span class="example-tag">Builder</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="examples-note reveal">
+        These are design examples showing the style and quality of sites we build. <strong>Your site will be custom-designed for your trade, area, and brand.</strong>
+      </p>
+
+      <div style="text-align:center; margin-top:2rem;" class="reveal">
+        <button onclick="openModal()" class="btn btn-primary-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Get a Site Like This — £99
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── TRUST SIGNALS ─── -->
+  <section class="trust-section section-pad">
+    <div class="container">
+      <div class="section-tag reveal">Why Tradespeople Trust Us</div>
+      <h2 class="section-title reveal reveal-delay-1">You're in<br><span class="accent">Safe Hands</span></h2>
+
+      <div class="trust-grid">
+        <div class="trust-card reveal">
+          <div class="trust-card-icon">🏢</div>
+          <h3>Backed by a Real Agency</h3>
+          <p>EA Digital Services is a registered UK digital agency — not a one-man band or a template tool. Real team, real accountability.</p>
+        </div>
+        <div class="trust-card reveal reveal-delay-1">
+          <div class="trust-card-icon">💳</div>
+          <h3>Secure Stripe Payments</h3>
+          <p>Your payment is processed by Stripe — the same technology used by Amazon and ASOS. We never see or store your card details.</p>
+        </div>
+        <div class="trust-card reveal reveal-delay-2">
+          <div class="trust-card-icon">🔒</div>
+          <h3>100% Money-Back Guarantee</h3>
+          <p>Not happy with your site? We refund every penny, no questions asked. We back our work completely.</p>
+        </div>
+        <div class="trust-card reveal reveal-delay-3">
+          <div class="trust-card-icon">📞</div>
+          <h3>Real People, Real Support</h3>
+          <p>You deal directly with our team via WhatsApp and email throughout the whole process. No bots, no ticket systems.</p>
+        </div>
+        <div class="trust-card reveal">
+          <div class="trust-card-icon">⚡</div>
+          <h3>7-Day Delivery Guarantee</h3>
+          <p>We commit to having your live preview ready within 7 days of your discovery call. No vague "a few weeks" timelines.</p>
+        </div>
+        <div class="trust-card reveal reveal-delay-1">
+          <div class="trust-card-icon">📄</div>
+          <h3>Zero Contracts</h3>
+          <p>No lock-in, no small print. Pay once, own your website outright. The only ongoing cost is your own hosting (~£5–10/mo).</p>
+        </div>
+      </div>
+
+      <div class="trust-badges reveal">
+        <div class="trust-badge"><div class="dot"></div>SSL Encrypted</div>
+        <div class="trust-badge"><div class="dot"></div>Stripe Secured</div>
+        <div class="trust-badge"><div class="dot"></div>UK Registered Business</div>
+        <div class="trust-badge"><div class="dot"></div>GDPR Compliant</div>
+        <div class="trust-badge"><div class="dot"></div>No Hidden Fees</div>
+        <div class="trust-badge"><div class="dot"></div>Money-Back Guaranteed</div>
+        <div class="trust-badge"><div class="dot"></div>No Contracts</div>
       </div>
     </div>
   </section>
@@ -1745,10 +2581,10 @@
       <p class="final-cta-sub reveal reveal-delay-2">One-time · No monthly fees · Live in 7 days · Money-back guaranteed</p>
 
       <div class="final-cta-actions reveal reveal-delay-3">
-        <a href="https://buy.stripe.com/9B6aEW4KXcIGetJ4akcAo04" class="btn btn-primary-lg">
+        <button onclick="openModal()" class="btn btn-primary-lg">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          Pay £99 & Book Your Call
-        </a>
+          Get My £99 Website
+        </button>
         <a href="https://wa.me/447904937213?text=Hi%2C%20I%27d%20like%20the%20%C2%A399%20trades%20website" class="btn btn-wa" id="wa-cta-2">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp Us Instead
@@ -1827,15 +2663,135 @@
   </section>
 
 
+  <!-- ─── LEAD CAPTURE MODAL ─── -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Get your £99 website">
+    <div class="modal" id="modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+
+      <!-- Step indicators -->
+      <div class="modal-header">
+        <div class="modal-step-indicator">
+          <div class="modal-step-dot active" id="mdot-1"></div>
+          <div class="modal-step-dot" id="mdot-2"></div>
+          <div class="modal-step-dot" id="mdot-3"></div>
+        </div>
+      </div>
+
+      <!-- ── STEP 1: Trade selector ── -->
+      <div class="modal-step active" id="mstep-1">
+        <div class="modal-header" style="padding-top:0;">
+          <div class="modal-pretitle">Step 1 of 3</div>
+          <h2>What's Your Trade?</h2>
+          <p class="modal-sub">We'll tailor your site specifically for your industry.</p>
+        </div>
+        <div class="modal-body">
+          <div class="trade-grid" id="trade-grid">
+            <button class="trade-btn" data-trade="Plumber" onclick="selectTrade(this)"><span class="trade-btn-icon">🔧</span>Plumber</button>
+            <button class="trade-btn" data-trade="Electrician" onclick="selectTrade(this)"><span class="trade-btn-icon">⚡</span>Electrician</button>
+            <button class="trade-btn" data-trade="Builder" onclick="selectTrade(this)"><span class="trade-btn-icon">🏗️</span>Builder</button>
+            <button class="trade-btn" data-trade="Roofer" onclick="selectTrade(this)"><span class="trade-btn-icon">🏠</span>Roofer</button>
+            <button class="trade-btn" data-trade="Plasterer" onclick="selectTrade(this)"><span class="trade-btn-icon">🪣</span>Plasterer</button>
+            <button class="trade-btn" data-trade="Painter & Decorator" onclick="selectTrade(this)"><span class="trade-btn-icon">🖌️</span>Painter</button>
+            <button class="trade-btn" data-trade="Landscaper" onclick="selectTrade(this)"><span class="trade-btn-icon">🌿</span>Landscaper</button>
+            <button class="trade-btn" data-trade="Gas Engineer" onclick="selectTrade(this)"><span class="trade-btn-icon">🔥</span>Gas Engineer</button>
+            <button class="trade-btn" data-trade="Joiner / Carpenter" onclick="selectTrade(this)"><span class="trade-btn-icon">🪚</span>Joiner</button>
+            <button class="trade-btn" data-trade="Tiler" onclick="selectTrade(this)"><span class="trade-btn-icon">◼️</span>Tiler</button>
+            <button class="trade-btn trade-other" data-trade="Other" onclick="selectTrade(this)"><span class="trade-btn-icon">🛠️</span>Other Trade</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: Contact details ── -->
+      <div class="modal-step" id="mstep-2">
+        <div class="modal-header" style="padding-top:0;">
+          <button class="modal-back" onclick="goToStep(1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            Back
+          </button>
+          <div class="modal-pretitle">Step 2 of 3</div>
+          <h2>Almost There</h2>
+          <p class="modal-sub">We'll send you a quick confirmation and reach out to answer any questions before you pay.</p>
+        </div>
+        <div class="modal-body">
+          <div class="modal-field">
+            <label for="m-name">Your Name *</label>
+            <input type="text" id="m-name" placeholder="e.g. Dave Smith" autocomplete="name" />
+          </div>
+          <div class="modal-field">
+            <label for="m-phone">Phone Number *</label>
+            <input type="tel" id="m-phone" placeholder="e.g. 07700 000 000" autocomplete="tel" />
+          </div>
+          <div class="modal-field">
+            <label for="m-email">Email Address *</label>
+            <input type="email" id="m-email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+          <div class="modal-field">
+            <label for="m-area">Town / Area *</label>
+            <input type="text" id="m-area" placeholder="e.g. Manchester" autocomplete="address-level2" />
+          </div>
+          <button class="modal-next" id="step2-next" onclick="submitLead()">
+            Reserve My Spot
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </button>
+          <p class="modal-privacy" style="margin-top:0.75rem;">
+            🔒 We never share your details. No spam, ever.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Confirmed + Stripe ── -->
+      <div class="modal-step" id="mstep-3">
+        <div class="modal-header" style="padding-top:0;">
+          <div class="modal-confirm-icon">🎉</div>
+          <div class="modal-pretitle">Step 3 of 3 — You're Reserved</div>
+          <h2>Spot Secured!</h2>
+          <p class="modal-sub">We've got your details. Now complete your payment to lock in your £99 website and book your discovery call.</p>
+        </div>
+        <div class="modal-body">
+          <div class="modal-summary" id="modal-summary">
+            <div class="modal-summary-row">
+              <span>Trade</span><span id="sum-trade">—</span>
+            </div>
+            <div class="modal-summary-row">
+              <span>Name</span><span id="sum-name">—</span>
+            </div>
+            <div class="modal-summary-row">
+              <span>Area</span><span id="sum-area">—</span>
+            </div>
+            <div class="modal-summary-row">
+              <span>Price</span><span style="color:var(--yellow);">£99 one-time</span>
+            </div>
+          </div>
+
+          <a href="https://buy.stripe.com/9B6aEW4KXcIGetJ4akcAo04" class="modal-stripe-btn">
+            <div class="modal-stripe-btn-left">
+              <div class="modal-stripe-btn-title">Pay £99 & Book Your Call</div>
+              <div class="modal-stripe-btn-sub">Secure checkout via Stripe · Takes 2 minutes</div>
+            </div>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(14,15,16,0.7)"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </a>
+
+          <p class="modal-privacy">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color:#4ADE80; vertical-align:middle;"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.997-6l7.07-7.071-1.414-1.414-5.656 5.657-2.829-2.829-1.414 1.414L11.003 16z"/></svg>
+            256-bit SSL · Powered by Stripe · 100% money-back guarantee
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
   <!-- ─── FOOTER ─── -->
   <footer class="footer">
     <a href="https://www.eadigitalservices.co.uk" class="footer-logo">
-      <div class="footer-logo-mark">EA</div>
+      <div class="footer-logo-mark"><img src="ea-logo.png" alt="EA Digital Services" /></div>
       EA Digital <span>&nbsp;Services</span>
     </a>
     <nav class="footer-links">
       <a href="https://www.eadigitalservices.co.uk">Home</a>
       <a href="#what-you-get">What's Included</a>
+      <a href="#examples">Examples</a>
       <a href="#compare">Compare</a>
       <a href="#faq">FAQ</a>
       <a href="https://www.eadigitalservices.co.uk">Contact</a>
@@ -1883,9 +2839,114 @@
       });
     });
 
-    /* ── WhatsApp number update ── */
-    // Replace 447700000000 with your real WhatsApp number
-    // Format: 44 + number without leading 0 (e.g. 07712345678 → 447712345678)
+    /* ── Animated stat counters ── */
+    const counters = document.querySelectorAll('.stat-num[data-target]');
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseInt(el.dataset.target);
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const tick = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current;
+          if (current >= target) clearInterval(tick);
+        }, 25);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => countObserver.observe(c));
+
+    /* ── Modal ── */
+    let selectedTrade = '';
+    let currentStep = 1;
+
+    function openModal() {
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on overlay click
+    document.getElementById('modal-overlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    function goToStep(n) {
+      document.querySelectorAll('.modal-step').forEach((s, i) => {
+        s.classList.toggle('active', i + 1 === n);
+      });
+      document.querySelectorAll('.modal-step-dot').forEach((d, i) => {
+        d.classList.remove('active', 'done');
+        if (i + 1 < n) d.classList.add('done');
+        if (i + 1 === n) d.classList.add('active');
+      });
+      currentStep = n;
+      document.getElementById('modal').scrollTop = 0;
+    }
+
+    function selectTrade(btn) {
+      document.querySelectorAll('.trade-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedTrade = btn.dataset.trade;
+      setTimeout(() => goToStep(2), 220);
+    }
+
+    async function submitLead() {
+      const name  = document.getElementById('m-name').value.trim();
+      const phone = document.getElementById('m-phone').value.trim();
+      const email = document.getElementById('m-email').value.trim();
+      const area  = document.getElementById('m-area').value.trim();
+
+      // Validate
+      let ok = true;
+      [['m-name', name], ['m-phone', phone], ['m-email', email], ['m-area', area]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        el.classList.toggle('error', !val);
+        if (!val) ok = false;
+      });
+      if (!ok) return;
+
+      const btn = document.getElementById('step2-next');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      // Send lead to Formspree (replace YOUR_FORM_ID) or falls back to mailto
+      const FORMSPREE_ID = 'YOUR_FORM_ID';
+      const payload = { trade: selectedTrade, name, phone, email, area, _subject: `New Lead — ${name} (${selectedTrade})` };
+
+      try {
+        if (FORMSPREE_ID !== 'YOUR_FORM_ID') {
+          await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+        } else {
+          const body = `Trade: ${selectedTrade}%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}%0AArea: ${encodeURIComponent(area)}`;
+          window.open(`mailto:hello@eadigitalservices.co.uk?subject=${encodeURIComponent('New Lead — ' + name)}&body=${body}`);
+        }
+      } catch (_) {}
+
+      // Populate summary
+      document.getElementById('sum-trade').textContent = selectedTrade;
+      document.getElementById('sum-name').textContent  = name;
+      document.getElementById('sum-area').textContent  = area;
+
+      btn.disabled = false;
+      btn.innerHTML = 'Reserve My Spot <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>';
+      goToStep(3);
+    }
 
     /* ── Toast ── */
     function showToast(msg) {
