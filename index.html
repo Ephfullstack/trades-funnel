@@ -2921,21 +2921,28 @@
       btn.disabled = true;
       btn.textContent = 'Saving...';
 
-      // Send lead to Formspree (replace YOUR_FORM_ID) or falls back to mailto
-      const FORMSPREE_ID = 'YOUR_FORM_ID';
-      const payload = { trade: selectedTrade, name, phone, email, area, _subject: `New Lead — ${name} (${selectedTrade})` };
+      // Send lead to GoHighLevel
+      const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/i430dH1DYraDdS8ObMd7/webhook-trigger/c71f6870-d42c-4d3a-8a2a-61b51159edac';
+      const nameParts = name.trim().split(' ');
+      const payload = {
+        firstName:   nameParts[0] || name,
+        lastName:    nameParts.slice(1).join(' ') || '',
+        name,
+        email,
+        phone,
+        source:      '£99 Trades Funnel — Pre-Payment Lead',
+        trade:       selectedTrade,
+        area,
+        tags:        ['trades-funnel', 'pre-payment-lead', selectedTrade.toLowerCase().replace(/\s+/g, '-')],
+      };
 
       try {
-        if (FORMSPREE_ID !== 'YOUR_FORM_ID') {
-          await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(payload),
-          });
-        } else {
-          const body = `Trade: ${selectedTrade}%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email)}%0AArea: ${encodeURIComponent(area)}`;
-          window.open(`mailto:hello@eadigitalservices.co.uk?subject=${encodeURIComponent('New Lead — ' + name)}&body=${body}`);
-        }
+        await fetch(GHL_WEBHOOK, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+          mode:    'no-cors',
+        });
       } catch (_) {}
 
       // Populate summary
