@@ -19,6 +19,7 @@
       --dark:    #0E0F10;
       --dark2:   #161718;
       --dark3:   #1E1F21;
+      --mid:     #2A2B2D;
       --border:  #2E2F31;
       --white:   #FFFFFF;
       --muted:   #9A9A9A;
@@ -26,6 +27,8 @@
       --font-display:   'Bebas Neue', sans-serif;
       --font-condensed: 'Barlow Condensed', sans-serif;
       --font-body:      'Barlow', sans-serif;
+      --radius: 4px;
+      --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
     }
 
     html { scroll-behavior: smooth; }
@@ -48,265 +51,433 @@
       padding: 0 clamp(1rem, 4vw, 3rem);
       height: 64px;
       border-bottom: 1px solid var(--border);
-      background: rgba(14,15,16,0.95);
+      background: rgba(14,15,16,0.97);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .nav-logo {
       display: flex; align-items: center; gap: 10px;
       font-family: var(--font-condensed);
-      font-weight: 700; font-size: 1.1rem;
-      color: var(--white);
+      font-weight: 700; font-size: 1.1rem; color: var(--white);
     }
 
     .nav-logo span { color: var(--yellow); }
 
     .nav-logo-mark {
       width: 32px; height: 32px;
-      background: var(--yellow);
-      border-radius: 2px;
+      background: var(--yellow); border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.1rem; color: var(--dark);
+      font-family: var(--font-display); font-size: 1.1rem; color: var(--dark);
     }
 
     /* ── HERO ── */
     .hero {
-      padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem) 0;
+      padding: clamp(3rem,6vw,5rem) clamp(1rem,4vw,3rem) 2rem;
       text-align: center;
       position: relative;
     }
 
     .hero::before {
       content: '';
-      position: absolute;
-      top: 0; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 300px;
-      background: radial-gradient(ellipse at top, rgba(74,222,128,0.08) 0%, transparent 70%);
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 300px;
+      background: radial-gradient(ellipse at top, rgba(74,222,128,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .success-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 10px;
       background: rgba(74,222,128,0.1);
       border: 1px solid rgba(74,222,128,0.35);
       border-radius: 100px;
       padding: 8px 20px 8px 12px;
-      font-family: var(--font-condensed);
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1.75rem;
+      font-family: var(--font-condensed); font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 1.75rem;
     }
 
     .success-icon {
-      width: 28px; height: 28px;
-      background: var(--green);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--dark);
-      font-size: 1rem;
+      width: 28px; height: 28px; background: var(--green);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: var(--dark); font-size: 1rem;
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      line-height: 0.95;
-      color: var(--white);
-      margin-bottom: 1.25rem;
+      font-size: clamp(2.8rem,7vw,5.5rem);
+      line-height: 0.95; color: var(--white); margin-bottom: 1.25rem;
     }
 
     .hero h1 .accent { color: var(--yellow); }
 
     .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 1rem;
-      line-height: 1.7;
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 520px; margin: 0 auto 2rem; line-height: 1.7;
     }
 
     .hero-sub strong { color: var(--white); }
 
-    /* ── STEPS ── */
-    .steps-bar {
+    /* ── PROGRESS BAR ── */
+    .progress-wrap {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 clamp(1rem,4vw,3rem);
+    }
+
+    .progress-steps {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 0;
-      margin: 2.5rem auto 0;
-      max-width: 480px;
-      padding: 0 clamp(1rem, 4vw, 3rem);
     }
 
-    .step-pill {
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      position: relative;
+    }
+
+    .progress-step-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.1rem;
+      position: relative; z-index: 1;
+      transition: var(--transition);
+    }
+
+    .progress-step.done .progress-step-dot {
+      background: var(--green); color: var(--dark);
+    }
+
+    .progress-step.active .progress-step-dot {
+      background: var(--yellow); color: var(--dark);
+      box-shadow: 0 0 0 4px rgba(245,197,24,0.2);
+    }
+
+    .progress-step.pending .progress-step-dot {
+      background: var(--mid); color: var(--muted);
+      border: 2px solid var(--border);
+    }
+
+    .progress-step-label {
+      font-family: var(--font-condensed); font-weight: 700;
+      font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+      text-align: center; line-height: 1.3;
+    }
+
+    .progress-step.done .progress-step-label { color: var(--green); }
+    .progress-step.active .progress-step-label { color: var(--yellow); }
+    .progress-step.pending .progress-step-label { color: var(--muted); }
+
+    .progress-line {
+      flex: 1;
+      height: 2px;
+      margin-bottom: 22px;
+      transition: background 0.5s ease;
+    }
+
+    .progress-line.done { background: var(--green); }
+    .progress-line.active { background: linear-gradient(90deg, var(--green), var(--yellow)); }
+    .progress-line.pending { background: var(--border); }
+
+    /* ── MAIN CONTENT AREA ── */
+    .main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem,4vw,3rem) 5rem;
+    }
+
+    /* ── STEP PANELS ── */
+    .step-panel {
+      display: none;
+    }
+
+    .step-panel.active {
+      display: block;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ── PANEL HEADER ── */
+    .panel-header {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+      padding: 1.5rem 2rem;
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: 100px;
+      gap: 1rem;
+    }
+
+    .panel-icon {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .panel-icon.yellow { background: rgba(245,197,24,0.15); }
+    .panel-icon.green  { background: rgba(74,222,128,0.15); }
+
+    .panel-header-text h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem; color: var(--white); line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .panel-header-text p {
+      font-size: 0.82rem; color: var(--muted);
+    }
+
+    .panel-body {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 2rem;
+    }
+
+    /* ── FORM STYLES ── */
+    .form-section-label {
       font-family: var(--font-condensed);
-      font-weight: 700;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
+      font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--yellow); margin-bottom: 0.75rem; margin-top: 1.5rem;
+      display: flex; align-items: center; gap: 8px;
     }
 
-    .step-pill.done {
-      background: rgba(74,222,128,0.12);
-      border: 1px solid rgba(74,222,128,0.3);
-      color: var(--green);
+    .form-section-label:first-of-type { margin-top: 0; }
+
+    .form-section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
     }
 
-    .step-pill.active {
-      background: rgba(245,197,24,0.12);
-      border: 1px solid rgba(245,197,24,0.4);
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-family: var(--font-condensed); font-weight: 600;
+      font-size: 0.78rem; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 11px 14px;
+      font-family: var(--font-body); font-size: 0.9rem; color: var(--white);
+      transition: var(--transition); outline: none; width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--muted); opacity: 0.5; }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--yellow);
+      background: rgba(245,197,24,0.04);
+    }
+
+    .form-group select { appearance: none; cursor: pointer; }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    /* ── CHECKBOX GRID ── */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 8px;
+      margin-top: 0.25rem;
+    }
+
+    .checkbox-item {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--dark2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 9px 12px;
+      cursor: pointer; transition: var(--transition);
+      font-size: 0.875rem; color: var(--text);
+      user-select: none;
+    }
+
+    .checkbox-item:hover { border-color: rgba(245,197,24,0.4); }
+
+    .checkbox-item input[type="checkbox"] { display: none; }
+
+    .checkbox-item.checked {
+      background: rgba(245,197,24,0.1);
+      border-color: var(--yellow);
       color: var(--yellow);
     }
 
-    .step-connector {
-      flex: 1;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(74,222,128,0.4), rgba(245,197,24,0.4));
-      min-width: 24px;
+    .checkbox-box {
+      width: 18px; height: 18px; border-radius: 3px;
+      border: 1.5px solid var(--border); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; transition: var(--transition);
     }
 
-    /* ── CALENDLY SECTION ── */
-    .calendly-section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem);
+    .checkbox-item.checked .checkbox-box {
+      background: var(--yellow); border-color: var(--yellow); color: var(--dark);
     }
 
-    .calendly-label {
-      text-align: center;
-      margin-bottom: 1.5rem;
+    /* ── RADIO GROUP ── */
+    .radio-group {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 0.25rem;
     }
 
-    .calendly-label h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--white);
-      margin-bottom: 0.5rem;
+    .radio-item {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--dark2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 9px 14px;
+      cursor: pointer; transition: var(--transition);
+      font-size: 0.875rem; color: var(--text);
+      user-select: none;
     }
 
-    .calendly-label p {
-      color: var(--muted);
-      font-size: 0.95rem;
+    .radio-item input[type="radio"] { display: none; }
+
+    .radio-item:hover { border-color: rgba(245,197,24,0.4); }
+
+    .radio-item.selected {
+      background: rgba(245,197,24,0.1);
+      border-color: var(--yellow); color: var(--yellow);
     }
 
+    .radio-dot {
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 1.5px solid var(--border); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+
+    .radio-item.selected .radio-dot {
+      border-color: var(--yellow);
+      background: var(--yellow);
+      box-shadow: inset 0 0 0 3px var(--dark2);
+    }
+
+    /* ── SUBMIT BUTTON ── */
+    .form-submit {
+      width: 100%; margin-top: 1.75rem;
+      background: var(--yellow); color: var(--dark);
+      border: none; border-radius: var(--radius);
+      padding: 16px; cursor: pointer;
+      font-family: var(--font-condensed); font-weight: 700;
+      font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: var(--transition);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+
+    .form-submit:hover {
+      background: #ffd027; transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(245,197,24,0.35);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.6; cursor: not-allowed; transform: none;
+    }
+
+    .form-note {
+      text-align: center; font-size: 0.78rem; color: var(--muted);
+      margin-top: 0.875rem; line-height: 1.5;
+    }
+
+    /* ── CALENDLY ── */
     .calendly-wrap {
-      background: var(--dark3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 0 0 8px 8px;
       overflow: hidden;
       min-height: 700px;
     }
 
-    .calendly-inline-widget {
-      min-height: 700px;
-    }
+    .calendly-inline-widget { min-height: 700px; }
 
     /* ── WHAT HAPPENS NEXT ── */
     .next-section {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
-    }
-
-    .next-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      color: var(--white);
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .next-title span { color: var(--yellow); }
-
-    .next-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1px;
+      margin-top: 3rem;
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
     }
 
+    .next-section-title {
+      background: var(--dark2);
+      padding: 1rem 1.5rem;
+      font-family: var(--font-condensed); font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .next-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
     .next-card {
-      background: var(--dark3);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      background: var(--dark3); padding: 1.25rem 1.5rem;
     }
 
     .next-card-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: rgba(245,197,24,0.25);
-      line-height: 1;
+      font-family: var(--font-display); font-size: 1.8rem;
+      color: rgba(245,197,24,0.2); line-height: 1; margin-bottom: 0.4rem;
     }
 
     .next-card h3 {
-      font-family: var(--font-condensed);
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
+      font-family: var(--font-condensed); font-weight: 700;
+      font-size: 0.95rem; color: var(--white); margin-bottom: 0.3rem;
     }
 
-    .next-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .next-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
     /* ── FOOTER ── */
     .footer {
-      background: #09090A;
-      border-top: 1px solid var(--border);
-      padding: 1.5rem clamp(1rem, 4vw, 3rem);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      background: #09090A; border-top: 1px solid var(--border);
+      padding: 1.5rem clamp(1rem,4vw,3rem);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: 1rem;
     }
 
     .footer-logo {
       display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-condensed);
-      font-weight: 700; font-size: 1rem;
-      color: var(--white);
+      font-family: var(--font-condensed); font-weight: 700;
+      font-size: 1rem; color: var(--white);
     }
 
     .footer-logo span { color: var(--yellow); }
 
     .footer-logo-mark {
-      width: 28px; height: 28px;
-      background: var(--yellow);
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
+      width: 28px; height: 28px; background: var(--yellow);
+      border-radius: 2px; display: flex; align-items: center;
+      justify-content: center; font-family: var(--font-display);
       font-size: 1rem; color: var(--dark);
     }
 
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+    .footer-copy { font-size: 0.8rem; color: var(--muted); }
 
     /* ── CONFETTI ── */
     .confetti-piece {
-      position: fixed;
-      width: 8px; height: 8px;
-      top: -10px;
-      border-radius: 2px;
-      animation: confetti-fall linear forwards;
+      position: fixed; width: 8px; height: 8px; top: -10px;
+      border-radius: 2px; animation: confetti-fall linear forwards;
       pointer-events: none;
     }
 
@@ -315,17 +486,17 @@
       100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
 
-    /* ── FADE IN ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: none; }
-    }
-
+    /* ── FADE ANIMATIONS ── */
     .fade-up { animation: fadeUp 0.6s ease both; }
     .fade-up-1 { animation-delay: 0.1s; }
     .fade-up-2 { animation-delay: 0.25s; }
     .fade-up-3 { animation-delay: 0.4s; }
-    .fade-up-4 { animation-delay: 0.55s; }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .next-grid { grid-template-columns: 1fr; }
+      .checkbox-grid { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 
@@ -337,88 +508,301 @@
       <div class="nav-logo-mark">EA</div>
       EA Digital <span>&nbsp;Services</span>
     </a>
-    <span style="font-family:var(--font-condensed);font-size:0.85rem;color:var(--muted);">Secure Payment · <span style="color:var(--green);">✓ Confirmed</span></span>
+    <span style="font-family:var(--font-condensed);font-size:0.85rem;color:var(--muted);">
+      Payment <span style="color:var(--green);">✓ Confirmed</span>
+    </span>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
     <div class="success-badge fade-up">
       <div class="success-icon">✓</div>
-      Payment Confirmed
+      Payment Confirmed — Let's Get Started
     </div>
 
     <h1 class="fade-up fade-up-1">
-      You're In.<br>
-      Let's <span class="accent">Build Your</span><br>
-      <span class="accent">Website.</span>
+      You're In.<br><span class="accent">Two Quick Steps</span><br>and We're Building.
     </h1>
 
     <p class="hero-sub fade-up fade-up-2">
-      <strong>Your £99 payment is confirmed.</strong> Now pick a time for your quick discovery call — it takes 20 minutes and we'll gather everything we need to build your site.
-    </p>
-
-    <!-- Progress steps -->
-    <div class="steps-bar fade-up fade-up-3">
-      <div class="step-pill done">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-        Payment Done
-      </div>
-      <div class="step-connector"></div>
-      <div class="step-pill active">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm1-10V7h-2v6h6v-2h-4z"/></svg>
-        Book Your Call
-      </div>
-    </div>
-  </div>
-
-  <!-- CALENDLY -->
-  <div class="calendly-section fade-up fade-up-4">
-    <div class="calendly-label">
-      <h2>Pick Your Time Slot</h2>
-      <p>20-minute call · We'll collect everything needed to build your site</p>
-    </div>
-    <div class="calendly-wrap">
-      <div
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/eadigitalservicesltd/99-trade-website-discovery-call?hide_gdpr_banner=1&background_color=1E1F21&text_color=E8E8E6&primary_color=F5C518"
-        style="min-width:320px; height:700px;">
-      </div>
-    </div>
-  </div>
-
-  <!-- WHAT HAPPENS NEXT -->
-  <div class="next-section">
-    <h2 class="next-title">What Happens <span>After Your Call</span></h2>
-    <div class="next-grid">
-      <div class="next-card">
-        <div class="next-card-num">01</div>
-        <h3>Discovery Call</h3>
-        <p>We learn about your trade, your area, and what you need from your website. 20 minutes, no tech knowledge required.</p>
-      </div>
-      <div class="next-card">
-        <div class="next-card-num">02</div>
-        <h3>We Build It</h3>
-        <p>Our team designs and builds your site. You'll receive a live preview link within 7 days of your call.</p>
-      </div>
-      <div class="next-card">
-        <div class="next-card-num">03</div>
-        <h3>You Approve</h3>
-        <p>Review the preview, request any tweaks, and give the green light. We handle all revisions included.</p>
-      </div>
-      <div class="next-card">
-        <div class="next-card-num">04</div>
-        <h3>Go Live</h3>
-        <p>We launch your site and walk you through everything. You start showing up online and getting enquiries.</p>
-      </div>
-    </div>
-
-    <p style="text-align:center; margin-top:2rem; font-size:0.85rem; color:var(--muted);">
-      Questions? Message us on
-      <a href="https://wa.me/447700000000" style="color:var(--yellow); font-weight:600;">WhatsApp</a>
-      or email
-      <a href="mailto:hello@eadigitalservices.co.uk" style="color:var(--yellow); font-weight:600;">hello@eadigitalservices.co.uk</a>
+      <strong>Your £99 payment is confirmed.</strong> Now complete your website brief, then pick a time for your 20-minute discovery call. The whole thing takes under 5 minutes.
     </p>
   </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrap fade-up fade-up-3">
+    <div class="progress-steps">
+      <div class="progress-step done" id="prog-1">
+        <div class="progress-step-dot">✓</div>
+        <div class="progress-step-label">Payment<br>Done</div>
+      </div>
+      <div class="progress-line done" id="line-1"></div>
+      <div class="progress-step active" id="prog-2">
+        <div class="progress-step-dot">2</div>
+        <div class="progress-step-label">Website<br>Brief</div>
+      </div>
+      <div class="progress-line pending" id="line-2"></div>
+      <div class="progress-step pending" id="prog-3">
+        <div class="progress-step-dot">3</div>
+        <div class="progress-step-label">Book<br>Your Call</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- ── STEP 2: WEBSITE BRIEF FORM ── -->
+    <div class="step-panel active" id="step-brief">
+
+      <div class="panel-header">
+        <div class="panel-icon yellow">📋</div>
+        <div class="panel-header-text">
+          <h2>Your Website Brief</h2>
+          <p>Takes 2–3 minutes · Helps us turn up to your call fully prepared</p>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <form id="brief-form" novalidate>
+
+          <!-- ABOUT YOUR BUSINESS -->
+          <div class="form-section-label">About Your Business</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="b-name">Your Name *</label>
+              <input type="text" id="b-name" name="name" placeholder="e.g. Dave Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="b-biz">Business / Trading Name *</label>
+              <input type="text" id="b-biz" name="business" placeholder="e.g. Smith Plumbing Ltd" required />
+            </div>
+            <div class="form-group">
+              <label for="b-trade">Your Trade *</label>
+              <select id="b-trade" name="trade" required>
+                <option value="" disabled selected>Select your trade</option>
+                <option>Plumber</option>
+                <option>Electrician</option>
+                <option>Builder / General Contractor</option>
+                <option>Roofer</option>
+                <option>Plasterer</option>
+                <option>Painter & Decorator</option>
+                <option>Landscaper / Groundworker</option>
+                <option>Joiner / Carpenter</option>
+                <option>Gas Engineer / HVAC</option>
+                <option>Tiler</option>
+                <option>Handyman</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="b-area">Town & Service Area *</label>
+              <input type="text" id="b-area" name="area" placeholder="e.g. Manchester & surrounding" required />
+            </div>
+            <div class="form-group">
+              <label for="b-phone">Phone Number *</label>
+              <input type="tel" id="b-phone" name="phone" placeholder="e.g. 07700 000 000" required />
+            </div>
+            <div class="form-group">
+              <label for="b-email">Email Address *</label>
+              <input type="email" id="b-email" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <!-- WEBSITE PAGES -->
+          <div class="form-section-label">Pages You'd Like</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.75rem;">Select all that apply — we'll include these on your site.</p>
+          <div class="checkbox-grid" id="pages-grid">
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="Home" checked />
+              <div class="checkbox-box">✓</div>Home
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="About" />
+              <div class="checkbox-box"></div>About
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="Services" checked />
+              <div class="checkbox-box">✓</div>Services
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="Gallery" />
+              <div class="checkbox-box"></div>Gallery / Work
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="Testimonials" />
+              <div class="checkbox-box"></div>Testimonials
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="Contact" checked />
+              <div class="checkbox-box">✓</div>Contact / Quote
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="Areas Covered" />
+              <div class="checkbox-box"></div>Areas Covered
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="pages" value="FAQ" />
+              <div class="checkbox-box"></div>FAQ
+            </label>
+          </div>
+
+          <!-- ASSETS -->
+          <div class="form-section-label">Your Assets</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+
+            <div>
+              <label style="font-family:var(--font-condensed);font-weight:600;font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Do you have a logo?</label>
+              <div class="radio-group" id="logo-group">
+                <label class="radio-item">
+                  <input type="radio" name="logo" value="Yes" />
+                  <div class="radio-dot"></div>Yes
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="logo" value="No" />
+                  <div class="radio-dot"></div>No
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="logo" value="Need one" />
+                  <div class="radio-dot"></div>Need one
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label style="font-family:var(--font-condensed);font-weight:600;font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.5rem;">Photos of your work?</label>
+              <div class="radio-group" id="photos-group">
+                <label class="radio-item">
+                  <input type="radio" name="photos" value="Yes" />
+                  <div class="radio-dot"></div>Yes
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="photos" value="No" />
+                  <div class="radio-dot"></div>No
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="photos" value="A few" />
+                  <div class="radio-dot"></div>A few
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ACCREDITATIONS -->
+          <div class="form-section-label" style="margin-top:1.5rem;">Accreditations / Certifications</div>
+          <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.75rem;">Tick any you hold — we'll display these prominently on your site.</p>
+          <div class="checkbox-grid" id="accred-grid">
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="Gas Safe" />
+              <div class="checkbox-box"></div>Gas Safe
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="NICEIC" />
+              <div class="checkbox-box"></div>NICEIC
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="NAPIT" />
+              <div class="checkbox-box"></div>NAPIT
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="Checkatrade" />
+              <div class="checkbox-box"></div>Checkatrade
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="Which? Trusted" />
+              <div class="checkbox-box"></div>Which? Trusted
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="CHAS" />
+              <div class="checkbox-box"></div>CHAS
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="TrustMark" />
+              <div class="checkbox-box"></div>TrustMark
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="accred" value="Other" />
+              <div class="checkbox-box"></div>Other
+            </label>
+          </div>
+
+          <!-- ANYTHING ELSE -->
+          <div class="form-section-label" style="margin-top:1.5rem;">Anything Else</div>
+          <div class="form-group full">
+            <label for="b-notes">Specific requests or things you'd like on your site?</label>
+            <textarea id="b-notes" name="notes" placeholder="e.g. I want an emergency call-out button, I need a price list section, my brand colours are red and white..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="brief-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Save Brief & Book My Call
+          </button>
+
+          <p class="form-note">
+            Your brief is sent to our team before your call so we turn up prepared.
+          </p>
+
+        </form>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: CALENDLY ── -->
+    <div class="step-panel" id="step-calendly">
+
+      <div class="panel-header">
+        <div class="panel-icon green">📅</div>
+        <div class="panel-header-text">
+          <h2>Book Your Discovery Call</h2>
+          <p>20 minutes · Pick a time that works for you</p>
+        </div>
+      </div>
+
+      <div class="calendly-wrap">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/eadigitalservicesltd/99-trade-website-discovery-call?hide_gdpr_banner=1&background_color=1E1F21&text_color=E8E8E6&primary_color=F5C518"
+          style="min-width:320px; height:700px;">
+        </div>
+      </div>
+
+      <!-- What happens next -->
+      <div class="next-section">
+        <div class="next-section-title">What Happens After Your Call</div>
+        <div class="next-grid">
+          <div class="next-card">
+            <div class="next-card-num">01</div>
+            <h3>Discovery Call</h3>
+            <p>We review your brief, ask any final questions, and confirm your requirements. 20 minutes, relaxed.</p>
+          </div>
+          <div class="next-card">
+            <div class="next-card-num">02</div>
+            <h3>We Build It</h3>
+            <p>Our team gets to work. You'll receive a live preview link within 7 days of your call.</p>
+          </div>
+          <div class="next-card">
+            <div class="next-card-num">03</div>
+            <h3>You Approve</h3>
+            <p>Review the preview, request tweaks, and give the green light. Revisions included.</p>
+          </div>
+          <div class="next-card">
+            <div class="next-card-num">04</div>
+            <h3>Go Live</h3>
+            <p>We launch your site and walk you through it. Start getting found and getting enquiries.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center; margin-top:1.5rem; font-size:0.85rem; color:var(--muted);">
+        Questions? Message us on
+        <a href="https://wa.me/447700000000" style="color:var(--yellow);font-weight:600;">WhatsApp</a>
+        or email
+        <a href="mailto:hello@eadigitalservices.co.uk" style="color:var(--yellow);font-weight:600;">hello@eadigitalservices.co.uk</a>
+      </p>
+
+    </div>
+
+  </div><!-- /main -->
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -429,31 +813,145 @@
     <p class="footer-copy">&copy; 2026 EA Digital Services. All rights reserved.</p>
   </footer>
 
-  <!-- Calendly widget script -->
+  <!-- Calendly widget script (loads only when needed) -->
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
-  <!-- Confetti burst on load -->
   <script>
-    const colors = ['#F5C518', '#FF5A1F', '#4ADE80', '#FFFFFF', '#60A5FA'];
+    /* ── Checkbox toggle ── */
+    document.querySelectorAll('.checkbox-item').forEach(item => {
+      const cb = item.querySelector('input[type="checkbox"]');
+      const box = item.querySelector('.checkbox-box');
+      // Sync initial state
+      if (cb.checked) item.classList.add('checked');
+      item.addEventListener('click', () => {
+        cb.checked = !cb.checked;
+        item.classList.toggle('checked', cb.checked);
+        box.textContent = cb.checked ? '✓' : '';
+      });
+    });
 
+    /* ── Radio toggle ── */
+    document.querySelectorAll('.radio-group').forEach(group => {
+      group.querySelectorAll('.radio-item').forEach(item => {
+        item.addEventListener('click', () => {
+          group.querySelectorAll('.radio-item').forEach(i => i.classList.remove('selected'));
+          item.classList.add('selected');
+          item.querySelector('input').checked = true;
+        });
+      });
+    });
+
+    /* ── Progress update ── */
+    function advanceToCalendly() {
+      // Update progress bar
+      document.getElementById('prog-2').className = 'progress-step done';
+      document.getElementById('prog-2').querySelector('.progress-step-dot').textContent = '✓';
+      document.getElementById('line-2').className = 'progress-line active';
+      document.getElementById('prog-3').className = 'progress-step active';
+      document.getElementById('prog-3').querySelector('.progress-step-dot').textContent = '3';
+
+      // Swap panels
+      document.getElementById('step-brief').classList.remove('active');
+      document.getElementById('step-calendly').classList.add('active');
+
+      // Scroll to top of content
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ── Form submission ── */
+    document.getElementById('brief-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const btn  = document.getElementById('brief-submit');
+
+      // Basic validation
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        field.style.borderColor = '';
+        if (!field.value.trim()) {
+          field.style.borderColor = '#F87171';
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        form.querySelector('[required]:invalid, [required][style*="F87171"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="animation:spin 1s linear infinite"><path d="M12 2a10 10 0 0 1 10 10h-2a8 8 0 0 0-8-8V2z"/></svg> Saving your brief...`;
+
+      // Collect form data
+      const data = new FormData(form);
+      const pages  = [...form.querySelectorAll('[name="pages"]:checked')].map(c => c.value);
+      const accred = [...form.querySelectorAll('[name="accred"]:checked')].map(c => c.value);
+
+      const payload = {
+        name:     data.get('name'),
+        business: data.get('business'),
+        trade:    data.get('trade'),
+        area:     data.get('area'),
+        phone:    data.get('phone'),
+        email:    data.get('email'),
+        logo:     data.get('logo') || 'Not specified',
+        photos:   data.get('photos') || 'Not specified',
+        pages:    pages.join(', ') || 'Not specified',
+        accred:   accred.join(', ') || 'None',
+        notes:    data.get('notes') || '',
+      };
+
+      // ── Send to Formspree ──
+      // Sign up free at formspree.io, create a form, and replace YOUR_FORM_ID below
+      const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+      try {
+        if (FORMSPREE_ID !== 'YOUR_FORM_ID') {
+          await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ ...payload, _subject: `Website Brief — ${payload.name} (${payload.trade})` }),
+          });
+        } else {
+          // Fallback: mailto with pre-filled data (works without a backend)
+          const body = Object.entries(payload)
+            .map(([k, v]) => `${k.toUpperCase()}: ${v}`)
+            .join('%0A');
+          window.open(`mailto:hello@eadigitalservices.co.uk?subject=${encodeURIComponent('Website Brief — ' + payload.name)}&body=${body}`);
+        }
+      } catch (_) {
+        // Silent fail — still advance to booking
+      }
+
+      // Always advance to Calendly step regardless
+      setTimeout(advanceToCalendly, 600);
+    });
+
+    /* ── Spin keyframe ── */
+    const style = document.createElement('style');
+    style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+    document.head.appendChild(style);
+
+    /* ── Confetti on load ── */
+    const colors = ['#F5C518','#FF5A1F','#4ADE80','#FFFFFF','#60A5FA'];
     function burst() {
       for (let i = 0; i < 60; i++) {
         const el = document.createElement('div');
         el.className = 'confetti-piece';
         el.style.cssText = `
-          left: ${Math.random() * 100}vw;
-          background: ${colors[Math.floor(Math.random() * colors.length)]};
-          width: ${4 + Math.random() * 8}px;
-          height: ${4 + Math.random() * 8}px;
-          border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
-          animation-duration: ${2 + Math.random() * 3}s;
-          animation-delay: ${Math.random() * 0.8}s;
+          left:${Math.random()*100}vw;
+          background:${colors[Math.floor(Math.random()*colors.length)]};
+          width:${4+Math.random()*8}px; height:${4+Math.random()*8}px;
+          border-radius:${Math.random()>.5?'50%':'2px'};
+          animation-duration:${2+Math.random()*3}s;
+          animation-delay:${Math.random()*.8}s;
         `;
         document.body.appendChild(el);
         el.addEventListener('animationend', () => el.remove());
       }
     }
-
     window.addEventListener('load', () => setTimeout(burst, 300));
   </script>
 
