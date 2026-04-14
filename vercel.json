@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "netlify/functions/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/create-contact", "dest": "/netlify/functions/create-contact.js" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
