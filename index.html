@@ -2921,8 +2921,7 @@
       btn.disabled = true;
       btn.textContent = 'Saving...';
 
-      // Send lead to GoHighLevel
-      const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/i430dH1DYraDdS8ObMd7/webhook-trigger/c71f6870-d42c-4d3a-8a2a-61b51159edac';
+      // Send lead to GHL via Netlify function
       const nameParts = name.trim().split(' ');
       const payload = {
         firstName:   nameParts[0] || name,
@@ -2937,7 +2936,7 @@
       };
 
       try {
-        await fetch(GHL_WEBHOOK, {
+        await fetch('/.netlify/functions/create-contact', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify(payload),

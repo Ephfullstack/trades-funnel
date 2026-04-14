@@ -905,29 +905,28 @@
         notes:    data.get('notes') || '',
       };
 
-      // ── Send to GoHighLevel ──
-      const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/i430dH1DYraDdS8ObMd7/webhook-trigger/c71f6870-d42c-4d3a-8a2a-61b51159edac';
+      // ── Send to GHL via Netlify function ──
       const nameParts = (payload.name || '').trim().split(' ');
       const ghlPayload = {
-        firstName:    nameParts[0] || payload.name,
-        lastName:     nameParts.slice(1).join(' ') || '',
-        name:         payload.name,
-        email:        payload.email,
-        phone:        payload.phone,
-        source:       '£99 Trades Funnel — Post-Payment Brief',
-        trade:        payload.trade,
-        businessName: payload.business,
-        area:         payload.area,
-        logo:         payload.logo,
-        photos:       payload.photos,
-        pages:        payload.pages,
+        firstName:      nameParts[0] || payload.name,
+        lastName:       nameParts.slice(1).join(' ') || '',
+        name:           payload.name,
+        email:          payload.email,
+        phone:          payload.phone,
+        source:         '£99 Trades Funnel — Post-Payment Brief',
+        trade:          payload.trade,
+        businessName:   payload.business,
+        area:           payload.area,
+        logo:           payload.logo,
+        photos:         payload.photos,
+        pages:          payload.pages,
         accreditations: payload.accred,
-        notes:        payload.notes,
-        tags:         ['trades-funnel', 'paid-customer', 'website-brief', payload.trade.toLowerCase().replace(/\s+/g, '-')],
+        notes:          payload.notes,
+        tags:           ['trades-funnel', 'paid-customer', 'website-brief', payload.trade.toLowerCase().replace(/\s+/g, '-')],
       };
 
       try {
-        await fetch(GHL_WEBHOOK, {
+        await fetch('/.netlify/functions/create-contact', {
           method:  'POST',
           headers: { 'Content-Type': 'application/json' },
           body:    JSON.stringify(ghlPayload),
